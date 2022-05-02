@@ -1,0 +1,59 @@
+# NODE.JS FUNDAMENTALS
+
+## INDICE
+1. Foundations and Environment
+    * NodeJS REPL
+    * NodeJS vs Javascript
+
+2. Internals
+    * a
+    * a
+    * a
+
+3. Module System
+    * a
+    * a
+    * a
+
+4. Package Management
+    * a
+    * a
+    * a
+
+-----------------------------------------------------------------
+
+## Foundations and Environment
+
+Para ejecutar un script con node desde la terminal:
+
+    >> node hello.js
+
+Node posee acceso a herramientas ajenas a las de Javascript. Así como un browser posee el objeto "Window", Node posee el objeto "Global", "Process", etc.
+
+**Process Object:** Es un "global" que provee información y control acerca del proceso actual de Node que está siendo ejecutado.
+
+Ejemplo:
+
+    // const mission = 'learn';
+    const mission = process.argv[2];
+
+    if (mission === 'learn') 
+        console.log('Time to write some Node code!')
+    else 
+        console.log(`Is ${mission} really more fun? :(`)
+
+Al especificar la variable a una variable de argumento de process, podemos asignarla al ejecutar el script desde consola, de la siguiente manera:
+
+    >> node hello.js learn
+        "Time to write some Node code!"
+    >> node hello.js notlearn
+        "Is notlearn really more fun? :("
+
+
+-----------------------------------------------------------------
+
+
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
