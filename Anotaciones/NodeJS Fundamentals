@@ -6,9 +6,12 @@
     * NodeJS vs Javascript
 
 2. Internals
-    * a
-    * a
-    * a
+    * What Node.js includes
+    * Node Internals Deep Dive
+    * libuv Internals Deep Dive
+    * Synchronous vs Asynchronous
+    * Asynchronous Callbacks
+    *
 
 3. Module System
     * a
@@ -22,7 +25,7 @@
 
 -----------------------------------------------------------------
 
-## Foundations and Environment
+## **Foundations and Environment**
 
 Para ejecutar un script con node desde la terminal:
 
@@ -30,29 +33,111 @@ Para ejecutar un script con node desde la terminal:
 
 Node posee acceso a herramientas ajenas a las de Javascript. Así como un browser posee el objeto "Window", Node posee el objeto "Global", "Process", etc.
 
-**Process Object:** Es un "global" que provee información y control acerca del proceso actual de Node que está siendo ejecutado.
+### **Process Object** 
+
+Es un "global" que provee información y control acerca del proceso actual de Node que está siendo ejecutado.
+
+Process proviene de "global.process".
 
 Ejemplo:
 
     // const mission = 'learn';
     const mission = process.argv[2];
+    console.log(process.argv);
 
     if (mission === 'learn') 
         console.log('Time to write some Node code!')
     else 
         console.log(`Is ${mission} really more fun? :(`)
 
-Al especificar la variable a una variable de argumento de process, podemos asignarla al ejecutar el script desde consola, de la siguiente manera:
+Podemos asignar el valor a una variable de argumento de process al ejecutar el script desde consola, de la siguiente manera:
 
     >> node hello.js learn
         "Time to write some Node code!"
     >> node hello.js notlearn
         "Is notlearn really more fun? :("
 
+NOTA: Imprimiendo "process.argv" obtenemos los parámetros que le estamos pasando desde la consola, es decir:
+
+* node -> La ruta de node en la máquina.
+* hello.js -> La ruta del script que estamos ejecutando.
+* learn -> Parámetro que estamos utilizando dentro del script.
+
+### **Node vs Javascript**
+
+Javascript es un lenguaje de programación y para ejecutarlo se utiliza un Javascript Engine como V8.
+
+Node esta creado sobre V8 y puede ejecutarse Javascript donde sea, no solo un browser.
+
+Pero, que diferencia hay entre ejecutar Javascript en Node y en un browser?
+
+### **Global Object**
+
+Los browser poseen "window", Node tiene "global".
+
+Browser:
+
+* Window
+* Document (Ya que manipulamos documentos)
+* History (Podemos interactuar con el histórico del browser)
+* Location (Interactuar con las localizaciones, url, etc)
+* Navigation (Data sobre el browser)
+
+NodeJS:
+
+* global
+* process (Procesamos script o servidores del sistema, argumentos)
+* module (Módulos utilizados, funciones, etc)
+* __filename (Rutas, archivos, etc)
+* require() (Importaciones)
+* ...
+
+### **Introduction to Backend vs Frontend**
+
+Node es utilizado mayormente para levantar servidores para aplicaciones web y moviles, conectar a bases de datos, proveer información de usuarios y manipular contenido como fotos, videos, etc.
+
+Estos servidores también manejan herramientas de autenticación y seguridad, lógica de negocio, etc.
 
 -----------------------------------------------------------------
 
+## **Node Internals**
 
+**Que existe dentro de NodeJS Runtime?**
+
+* V8 Engine: Lo que nos permite ejecutar código básico de Javascript.
+
+* Node.js APIs: Funciones adicionales que son ajenas a Javascript, como:
+
+    - File system (fs)
+    - Requests (http)
+    - Path (path)
+    - Security (crypto)
+
+* Node.js Bindings: Permiten llamar funcionalidades implementadas en C y C++ (low leven language)
+
+* libuv Library: Escrita en C, maneja entradas y salidas asíncronas.
+
+Un flujo común dentro del runtime sería:
+
+    JS FILE -> NODEJS APIS -> NODEJS BINDINGS -> LIBUV
+
+**Node Internals Deep Dive**
+
+Podemos checkear el código libre de Node en: https://github.com/nodejs/node
+
+**Libuv Internals Deep Dive**
+
+Website: http://libuv.org/
+
+Podemos checkear el código libre de Libuv en: https://github.com/libuv/libuv
+
+Teniendo acceso a las librerías y su contenido, podemos saber como funcionan y saber que es lo que hace por debajo de la mesa por cada función que se ejecute.
+
+**Síncrono vs Asíncrono**
+
+Síncrono se refiere a código que es ejecutado linea por linea, no puede seguir la ejecución hasta que no finalice la linea actual.
+
+Asíncrono permite pone ciertas ejecuciones de funciones asíncronas en una cola de ejecución, mientras prosigue con el resto del código.
 
 -----------------------------------------------------------------
 
