@@ -139,6 +139,18 @@ Síncrono se refiere a código que es ejecutado linea por linea, no puede seguir
 
 Asíncrono permite pone ciertas ejecuciones de funciones asíncronas en una cola de ejecución, mientras prosigue con el resto del código.
 
+**Non-Blocking Input & Output**
+
+Blocking Code se refiere al código o funciones que se ejecutan sincrónicamente, deteniendo el flujo hasta que se completen, como por ejemplo:
+
+    JSON.stringify({"food": "love"});
+
+Non-Blocking Code se refiere al código o funciones que se ejecutan en paralelo a la ejecución y no detienen el flujo de ejecución, por ejemplo:
+
+    setTimeout(myfunction, 1000);
+
+**NOTA**: Javascript es un lenguaje síncrono y debe manipularse para que funcione como un lenguaje asíncrono, para eso existe Node y demás herramientas.
+
 -----------------------------------------------------------------
 
 -----------------------------------------------------------------
