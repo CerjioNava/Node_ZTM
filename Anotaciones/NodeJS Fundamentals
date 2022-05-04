@@ -151,6 +151,7 @@ Non-Blocking Code se refiere al código o funciones que se ejecutan en paralelo 
 
 **NOTA**: Javascript es un lenguaje síncrono y debe manipularse para que funcione como un lenguaje asíncrono, para eso existe Node y demás herramientas.
 
+
 -----------------------------------------------------------------
 
 -----------------------------------------------------------------
