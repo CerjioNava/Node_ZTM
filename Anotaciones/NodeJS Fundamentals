@@ -163,8 +163,28 @@ Node ejecuta JS, así que se mantiene como un Single-Thread en el Main-Thread, s
 
 **Thread Pool:** Colección de Threads.
 
+### **Event Loops**
 
+Fases del Event Loop:
 
+1. Timers
+2. I/O Callbacks
+3. setImmediate
+4. Close Callbacks
+
+Funciones:
+
+* SetTimeout
+* SetInterval
+* SetImmediate
+
+### **Node vs PHP vs Python**
+
+A diferencia de PHP y Python, que requerían un thread casi por cada request, Node permite manipular multiples request concurrentes a la vez.
+
+Además, no bloquea el servidor. Sin embargo, si es necesario, se pueden usar Web Servers como Apache.
+
+## **What is Node best at?**
 
 -----------------------------------------------------------------
 
