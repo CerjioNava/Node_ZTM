@@ -151,6 +151,20 @@ Non-Blocking Code se refiere al código o funciones que se ejecutan en paralelo 
 
 **NOTA**: Javascript es un lenguaje síncrono y debe manipularse para que funcione como un lenguaje asíncrono, para eso existe Node y demás herramientas.
 
+### **Multi-Thread**
+
+Cada hilo de ejecución se "ejecuta" en paralelo a otros y son independientes entre si en términos de ejecución. Esto permite correr código de manera asíncrona a través de hilos.
+
+### **Is Node.js Multi-Threaded?**
+
+Node ejecuta JS, así que se mantiene como un Single-Thread en el Main-Thread, sin embargo es capaz de ejecutar multiples funciones asíncronas enviandolas al Event Loop.
+
+**Event Loop:** Está hecho en Libuv que ejecuta código asíncrono. Es decir, cada función asíncrona llamada en Node desde Javascript, se ejecuta a través del llamado Event Loop.
+
+**Thread Pool:** Colección de Threads.
+
+
+
 
 -----------------------------------------------------------------
 

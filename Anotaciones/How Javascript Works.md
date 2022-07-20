@@ -17,11 +17,11 @@ V8 en este caso, esta escrito en C++, y dentro del mismo se ve un proceso pareci
     -> Optimized Code
     -> MACHINE
 
-* Interpreter: Traduce y lee el archivo linea por linea durante la ejecución, interpretándose como Byte Code. Sin embargo, en altas cantidades de archivos por interpretar (e incluso loops), el proceso se hace lento.
+**Interpreter**: Traduce y lee el archivo linea por linea durante la ejecución, interpretándose como Byte Code. Sin embargo, en altas cantidades de archivos por interpretar (e incluso loops), el proceso se hace lento.
 
-* Compiler: Entiende primero toda la ejecución y la transforma en un lenguaje distinto, compilándose como Machine Code.
+**Compiler**: Entiende primero toda la ejecución y la transforma en un lenguaje distinto, compilándose como Machine Code.
 
-Ahora, si combinamos ambas filosofías, nace el "JIT Compiler (Just In Time".
+Ahora, si combinamos ambas filosofías, nace el "JIT Compiler (Just In Time)".
 
 **Web Assembly:** Es un "Standard Binary Executable Format".
 
