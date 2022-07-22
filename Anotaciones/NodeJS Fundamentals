@@ -100,7 +100,7 @@ Estos servidores también manejan herramientas de autenticación y seguridad, l�
 
 -----------------------------------------------------------------
 
-## **Node Internals**
+## **Node: Internals**
 
 **Que existe dentro de NodeJS Runtime?**
 
@@ -184,8 +184,71 @@ A diferencia de PHP y Python, que requerían un thread casi por cada request, No
 
 Además, no bloquea el servidor. Sin embargo, si es necesario, se pueden usar Web Servers como Apache.
 
-## **What is Node best at?**
+### **What is Node best at?**
+
+Node no es muy bueno en usos de Machine Learning o procesamiento de video. Sin embargo, Node es muy bueno en servidores y sus funciones.
+
+Node es bueno en manipulación de servidores, comunicación a bases de datos, conexión a servidores ajenos (por ejemplo, para autenticación y emails) o sirviendo data a aplicaciones más pesadas. 
+
+Es decir, es bueno para manipular entrada y salida de data en servidores, direccionamiento de la misma, y no tan bueno en cálculos pesados 
+
+Ejemplo: Netflix usa Node. El streaming de video es mayormente entrada y salida, por lo que enviar videos desde una base de datos de videos a través de un server de Node hacia un browser de un usuario o una aplicación específica, es posible y óptimo.
+
+### **Observer Design Pattern**
+
+Es lo que lidia con eventos y problemas de programación, para evitar reinventar patrones ya existentes por cada problema que se pueda presentar.
+
+El observardor (Listener) se suscribirá a eventos (Emitters) y se le notificará cuando estos ocurran, así reacciona y ejecuta alguna funcionalidad para la eventualidad.
+
+**Event-Driven, Event-Module, Event-Emitter, Event-Listener, ...**
+
+En Node, la manera de notificar a un observador es usando Callback Functions. 
+
+Node tiene "Event Modules" para manipular eventos y muchas de las APIs estan creadas sobre una arquitectura síncronca de Event Driven. 
+
+Ejemplo:
+
+    const EventEmitter = require('events');
+    const celebrity = new EventEmitter();
+
+    // Suscribe to celebrity for Observer 1
+    celebrity.on('race win', function() {
+        console.log('1. Congratulations! You won!');
+    });
+
+    // Suscribe to celebrity for Observer 2
+    celebrity.on('race lost', function() {
+        console.log('2. I could have better than that!');
+    });
+
+    // PROCESS
+    process.on('exit', () => {
+        console.log('Events finished!');
+    });
+
+    // OTRA FORMA
+    celebrity.on('race', (results) => {
+        if (results == 'win')
+            console.log('1. YOU WON!');
+        else 
+            console.log('2. YOU LOST!');
+    });
+
+    celebrity.emit('race win');
+    celebrity.emit('race lost');
+    celebrity.emit('race', 'win');
+    celebrity.emit('race', 'lost');
+
+**Process:** Deriva del EventEmitter, y tiene funciones para reaccionar a diferentos eventos que pueden ser emitidos en diferentes escenarios del ciclo de vida de Node.
+    
+NOTA: Véase la documentación para las distintas funcionalidades.
+
+https://nodejs.org/api/events.html#events_events
 
 -----------------------------------------------------------------
+
+## **Node: Module System**
+
+### **Require**
 
 -----------------------------------------------------------------
