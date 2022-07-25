@@ -23,7 +23,7 @@
     * a
     * a
 
------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
 
 ## **Foundations and Environment**
 
@@ -98,7 +98,7 @@ Node es utilizado mayormente para levantar servidores para aplicaciones web y mo
 
 Estos servidores también manejan herramientas de autenticación y seguridad, lógica de negocio, etc.
 
------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
 
 ## **Node: Internals**
 
@@ -245,10 +245,49 @@ NOTA: Véase la documentación para las distintas funcionalidades.
 
 https://nodejs.org/api/events.html#events_events
 
------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
 
 ## **Node: Module System**
 
+Los módulos son cajas de herramientas que contienen gran variedad de código específico para resolver ciertas funcionalidades.
+Utilizaremos módulos y librerías para reutilizar código ya creado para implementarlo a nuestro código.
+
+* Se reusa código ya existente.
+* Permite organizar nuestro código.
+* Solo se utiliza la herramienta del módulo qeu se va a utilizar.
+
 ### **Require**
 
------------------------------------------------------------------
+Es uno de los módulos built-in function de Node, y se declaran de la forma:
+
+    const EventEmitter = require('events')
+    const http = require('http)
+    ...
+
+### **Module Exports**
+
+Exportación de un script o librería hacia otros ajenos.
+
+    function read(data) return 'decrypted data';
+    module.exports = { read }
+
+NOTA: Ver la carpeta de "Modules Example" para ver el código de ejemplo.
+
+### **CommonJS vs ECMAScript Modules**
+
+CommonJS: Require() es parte de este estandar.
+
+    const myModule = require('module.js');
+    module.exports = { myFunction, myVariable };
+
+https://nodejs.org/api/modules.html#modules_modules_commonjs_modules
+
+ECMAScript (ES6): Estandar principal para Javascript Engines.
+
+    import * as myModule from '/module.js';
+    export { myFunction, myVariable };
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
+https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export
+
+--------------------------------------------------------------------------------------------------------------
