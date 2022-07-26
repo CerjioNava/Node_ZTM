@@ -7,4 +7,7 @@ function send(url, data) {
     console.log(`Sending ${encryptedData} to ${url}`);
 }
 
+// CommonJS
 module.exports = { send }
+// ES6
+// export { send };

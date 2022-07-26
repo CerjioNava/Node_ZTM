@@ -254,7 +254,9 @@ Utilizaremos módulos y librerías para reutilizar código ya creado para implem
 
 * Se reusa código ya existente.
 * Permite organizar nuestro código.
-* Solo se utiliza la herramienta del módulo qeu se va a utilizar.
+* Solo se utiliza la herramienta del módulo que se va a utilizar.
+
+Cuando se importa un módulo, se guarda temporalmente en el caché para ser reutilizado.
 
 ### **Require**
 
@@ -282,12 +284,28 @@ CommonJS: Require() es parte de este estandar.
 
 https://nodejs.org/api/modules.html#modules_modules_commonjs_modules
 
-ECMAScript (ES6): Estandar principal para Javascript Engines.
+ECMAScript (ES6): Estandar principal para Javascript Engines. SOLO PARA FORMATO ".mjs".
 
-    import * as myModule from '/module.js';
+    import * as myModule from '/module.js';    
+    import { send } from './request.mjs';
+    import { read } from './response.mjs';
     export { myFunction, myVariable };
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
 https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export
+
+**Extensión .mjs**:
+
+Es una extensión de Node para Módulos ES6.
+
+### **index.js**
+
+Permite hacer funcionar una carpeta como un módulo.
+
+Permite exportar funciones de distintos módulos que se encuentran en la misma carpeta, desde un solo punto.
+
+**VEASE EL EJEMPLO DE MODULOS!**
+
+NOTA: No es tan recomendable usar "index.js" de esta manera.
 
 --------------------------------------------------------------------------------------------------------------
