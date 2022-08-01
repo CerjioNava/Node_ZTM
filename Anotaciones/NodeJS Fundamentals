@@ -11,15 +11,16 @@
     * libuv Internals Deep Dive
     * Synchronous vs Asynchronous
     * Asynchronous Callbacks
-    *
+    * Multi-Thread
+    * Event Pool
+    * Observer Design Pattern
 
 3. Module System
-    * a
-    * a
-    * a
+    * Modules imports and exports
+    * CommonJS and ECMAScript
 
 4. Package Management
-    * a
+    * NPM (Node Package Manager)
     * a
     * a
 
@@ -309,3 +310,51 @@ Permite exportar funciones de distintos módulos que se encuentran en la misma c
 NOTA: No es tan recomendable usar "index.js" de esta manera.
 
 --------------------------------------------------------------------------------------------------------------
+
+## **Node: NPM (Node Package Manager)**
+
+Es el registro de software más grande del mundo, donde los desarrolladores comparten y utilizan paquetes de código abierto. Muchas organizaciones también usan npm para administrar el desarrollo privado.
+
+NPM consta de tres componentes distintos:
+
+* El sitio web: Donde se encuentran los paquetes públicos y privados, perfiles, etc. 
+
+    https://www.npmjs.com/
+
+* La interfaz de línea de comandos (CLI): Se ejecuta desde la terminal y la manera general de interactuar con npm y utilizarlo.
+
+* El registro: Es la base de datos pública de software.
+
+### **Module vs Package**
+
+Un módulo es un archivo que contiene código y funciones para exportar.
+
+Un paquete es una colección de módulos.
+
+Veamos en NPM las distintas variedades de paquetes posibles de implementar para hacer llamadas HTTP:
+
+* node-fetch: A light-weight that brings window.fetch to nodejs.
+* got: Human-friendly and powerful HTTP request library.
+* axios: Promise based HTTP client for the browser and nodejs.
+* ...
+
+Si seleccionamos Axios, la instalación por consola procedería con:
+
+    npm i axios
+
+Sin embargo, para instalar paquetes con NPM, primero necesitamos inicializar la aplicación de Node en nuestra aplicación y generar el "package.json" con:
+
+    npm init
+
+En este momento se pide una serie de especificaciones para la carpeta contenedora de módulos, dejando todo en blanco permanece todo default. Si queremos dejar todo default, escribimos con la bandera:
+
+    npm init -y
+
+Al añadir axios, la librería se implementa automáticamente en el "package.json".
+
+Para ejecutar un script de json, se añade al "package.json":
+
+    "scripts": {
+        "start": "node https.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
