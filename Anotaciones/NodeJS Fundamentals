@@ -323,7 +323,7 @@ NPM consta de tres componentes distintos:
 
 * La interfaz de línea de comandos (CLI): Se ejecuta desde la terminal y la manera general de interactuar con npm y utilizarlo.
 
-* El registro: Es la base de datos pública de software.
+* El registro: Es la base de datos pública de software de donde se descarga e instalan los paquetes.
 
 ### **Module vs Package**
 
@@ -352,13 +352,14 @@ En este momento se pide una serie de especificaciones para la carpeta contenedor
 
 Al añadir axios, la librería se implementa automáticamente en el "package.json".
 
-Para ejecutar un script de json, se añade al "package.json":
+Para ejecutar un script de json con "npm start", se añade al "package.json":
 
     "scripts": {
         "start": "node https.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
 
+NOTA: El script se puede ejecutar desde "node https.js" igualmente.
 NOTA: VÉASE Modules_Example y ahora Package_Example
 
 Creando un paquete:
@@ -369,3 +370,9 @@ Creando un paquete:
         .then((response) => console.log(response))
         .catch((err) => console.log(err))
         .then(() => console.log("all done"));
+
+Estos paquetes instalados de Node se alojan en el directorio "node_modules" en la raíz del proyecto. Es importante acotar que al instalar un paquete, este también posee Dependencias (más paquetes), es decir, instalando "axios" se descargan automáticamente también sus dependencias "follow-redirects" y "form-data", de las cuales luego dependen de "asynckit" y otras más dependencias. Esto es lo que se conoce habitualmente como un **"Dependency Tree"**.
+
+Esta es la razón por la cual las aplicaciones hechas en Node pueden pesar mucho si las dependencias incluidas se sobreextienden entre si.
+
+Sin embargo, la carpeta de "node_modules" no se comparte en los repositorios debido a su peso, se incluye en el ".gitignore", por lo que basta con el "package.json" y "package-lock.json" que contienen la información de las dependencias. De esta manera al descargar el proyecto solo bastara con hacer "npm install" para descargar todas las dependencias del proyecto mismo.
