@@ -358,3 +358,14 @@ Para ejecutar un script de json, se añade al "package.json":
         "start": "node https.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
+
+NOTA: VÉASE Modules_Example y ahora Package_Example
+
+Creando un paquete:
+
+    // Codigo ejemplo de paquete de Node
+    const axios = require('axios');
+    axios.get('https://www.google.com')
+        .then((response) => console.log(response))
+        .catch((err) => console.log(err))
+        .then(() => console.log("all done"));
