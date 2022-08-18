@@ -21,8 +21,9 @@
 
 4. Package Management
     * NPM (Node Package Manager)
-    * a
-    * a
+    * Modules vs Packages
+    * Semantic Versioning
+    * Package.json and package-lock.json
 
 --------------------------------------------------------------------------------------------------------------
 
@@ -360,7 +361,7 @@ Para ejecutar un script de json con "npm start", se añade al "package.json":
     },
 
 NOTA: El script se puede ejecutar desde "node https.js" igualmente.
-NOTA: VÉASE Modules_Example y ahora Package_Example
+NOTA: VÉASE Modules_Example y ahora Package_Example.
 
 Creando un paquete:
 
@@ -371,8 +372,60 @@ Creando un paquete:
         .catch((err) => console.log(err))
         .then(() => console.log("all done"));
 
+### **Dependency Tree**
+
 Estos paquetes instalados de Node se alojan en el directorio "node_modules" en la raíz del proyecto. Es importante acotar que al instalar un paquete, este también posee Dependencias (más paquetes), es decir, instalando "axios" se descargan automáticamente también sus dependencias "follow-redirects" y "form-data", de las cuales luego dependen de "asynckit" y otras más dependencias. Esto es lo que se conoce habitualmente como un **"Dependency Tree"**.
 
 Esta es la razón por la cual las aplicaciones hechas en Node pueden pesar mucho si las dependencias incluidas se sobreextienden entre si.
 
 Sin embargo, la carpeta de "node_modules" no se comparte en los repositorios debido a su peso, se incluye en el ".gitignore", por lo que basta con el "package.json" y "package-lock.json" que contienen la información de las dependencias. De esta manera al descargar el proyecto solo bastara con hacer "npm install" para descargar todas las dependencias del proyecto mismo.
+
+### **Semantic Versioning**
+
+Dado un número de versión MAJOR.MINOR.PATCH, se incrementa:
+
+    1. MAJOR: Versión cuando se realizan cambios incompatibles de la API.
+    2. MINOR: Versión cuando añades una funcionalidad que no rompe la compatibilidad.
+    3. PATCH: Versión cuando se arreglan bugs simples.
+
+Por ejemplo:
+
+    "dependencies": {
+        "axios": "^0.27.2"
+    }
+
+NOTA: El símbolo "^" indica que acepta cualquier cambio de la versión siempre que no sea un cambio en la versión MAJOR.
+
+### **Package-lock.json**
+
+Se genera automáticamente cuando ejecutamos cualquier comando "npm" donde la carpeta de módulos es modificada, o cuando el package.json es modificado.
+
+Es una descripción más específica de las dependencias de nuestro "package.json". No solo se muestran las dependencias o la versión, sino incluso la dirección de donde proviene la dependencia principal o el integrity check del paquete, adicionalmente indica cuales otras dependencias se requieren en el "Dependency Tree".
+
+Con estos archivos de versiones permiten que cualquier colaborador en el proyecto instale las mismas versiones de las dependencias en el proyecto, y así evitar problemas de versionamiento.
+
+### **Vulnerabilities in Dependencies**
+
+Es importante asegurarnos de que nuestras dependencias son seguras. Si una versión de la dependencia está deprecada o sufrió alguna actualización por seguridad y vulnerabilidad, pues lo ideal sería actualizarlo a dicha versión.
+
+Entonces, es importante utilizar versiones con menos vulnerabilidades aunque siempre existirán.
+
+### **Nodemon**
+
+Es una herramienta que ayuda en el desarrollo de aplicaciones al reiniciar automáticamente la aplicación de Node cada vez que un archivo en el proyecto sea modificado.
+
+Instalando Nodemon:
+
+    npm install nodemon
+
+Agregamos al package.json:
+
+    "scripts": {
+        "start": "node request.js",
+        "dev": "nodemon request.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+
+Ejecutamos:
+
+    npm run dev
