@@ -7,4 +7,5 @@ axios.get('https://www.wikipedia.com')
     .catch((err) => console.log(err) )
     .then(() => console.log("all done"));
 
-    console.log("PRUEBA");
+    console.log(nodemon.options);
+    
