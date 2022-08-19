@@ -25,6 +25,8 @@
     * Semantic Versioning
     * Package.json and package-lock.json
 
+5. Files I/O
+
 --------------------------------------------------------------------------------------------------------------
 
 ## **Foundations and Environment**
@@ -424,8 +426,25 @@ Agregamos al package.json:
         "start": "node request.js",
         "dev": "nodemon request.js",
         "test": "echo \"Error: no test specified\" && exit 1"
-    },
+    }
 
 Ejecutamos:
 
     npm run dev
+
+
+--------------------------------------------------------------------------------------------------------------
+
+## **File I/O - Planets Project**
+
+Iniciamos el proyecto con el "npm init".
+
+Con la data en la carpeta del proyecto, necesitaremos una librería con la cual leer Streams de archivos tipo CSV, y la librería de filesystem de Javascript no es suficiente, ya que FileSystem lee archivos, no lo analiza. Descargamos la siguiente librería:
+
+    npm install csv-parser
+
+Así parsearemos CSV con filesystem en streams de datas para parsearlo luego en arrays u objetos. Esta librería permite trabajar con Stream, Callback, Sync, etc.
+
+Véase el proyecto: **Planets Project**.
+
+NOTA: El archivo "kepler_data.csv" lo descargamos de la página de Kepler.
